@@ -1,0 +1,54 @@
+spring:
+  application.name: 'Loan API'
+  jmx.enabled: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/loan
+    username: sa_loan
+    password: sa_loan
+    hikari.pool-name: loan_pool
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    hikari.maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['logfile', 'health', 'info', 'scheduledtasks', 'prometheus']
+  endpoint:
+    logfile:
+      external-file: /${user.home}/${spring.application.name}/${spring.application.name}.log
+
+logging:
+  file:
+    name: /${user.home}/${spring.application.name}/${spring.application.name}.log
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.context.support: INFO
+
+info:
+  name: ${spring.application.name}
+  description: 'Simple API to Loans'
+  version: '0.0.1'
