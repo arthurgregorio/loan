@@ -18,6 +18,6 @@ class PersonScoreValidation : LoanValidation {
     }
 
     override fun onErrorMetric(): String {
-        return LoanValidationMetrics.PERSON_SCORE_IS_TO_LOW
+        return LoanValidationMetrics.PERSON_SCORE_IS_TOO_LOW
     }
 }

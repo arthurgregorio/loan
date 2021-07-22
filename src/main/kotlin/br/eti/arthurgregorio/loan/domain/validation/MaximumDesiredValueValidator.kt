@@ -13,6 +13,6 @@ class MaximumDesiredValueValidator : LoanValidation {
     }
 
     override fun onErrorMetric(): String {
-        return LoanValidationMetrics.LOAN_VALUE_TO_HIGH
+        return LoanValidationMetrics.LOAN_VALUE_TOO_HIGH
     }
 }
